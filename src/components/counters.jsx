@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Counter from './counter';
+import './counters.css';
 
 class Counters extends Component {
     state = { 
         counters:[
             {id:1,value:0},
             {id:2,value:0},
-            {id:3,value:4},
+            {id:3,value:0},
             {id:4,value:0}
         ]
      } 
@@ -23,16 +24,17 @@ class Counters extends Component {
         let cntrs=[];
         for(let i=1;i<=max+1;i++){
             cntrs.push({id:i,value:0})
-        }
-        console.log(cntrs)
+        }   
         this.setState({counters: cntrs})
     }
 
     render() { 
         return (
             <div>
-                <h1>Counters</h1>
-                <button className="btn btn-secondary m-2" onClick={()=>this.handleAdd()}>+</button>
+                <div className='header'>
+                <h1 id="title">Counters</h1>
+                <button className="btn btn-secondary m-2" title="inb" onClick={()=>this.handleAdd()}>+</button>
+                </div>
                 {this.state.counters.map(i => 
                 <Counter key={i.id} 
                 onDelete = {this.handleDelete}
